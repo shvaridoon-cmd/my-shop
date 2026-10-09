@@ -1,8 +1,11 @@
 // PLAYLIST CONFIG
 const playlist = [
-  { src: "song1.mp3", title: "Song 1" },
-  { src: "song2.mp3", title: "Song 2" },
-  { src: "song3.mp3", title: "Song 3" }
+  { src: "nasty - ariana grande [instrumental w_ background vocals].mp3", title: "nasty" },
+  { src: "Ariana Grande - hate that i made you love me (official lyric video).mp3", title: "hate that i made u love me" },
+  { src: "url to irl.mp3", title: "url to irl by Kash" },
+  { src: "fakemink - Easter Pink (Prod Suzy Sheer).mp3", title: "easter pink" },
+  { src: "LOONA Odd Eye Circle - ODD Front LYRICS [Color Coded Han Rom Eng] (LOOΠΔ 오드아이써클).mp3", title: "odd front },
+  { src: "Ariana Grande - sweetener (Official Audio).mp3", title: "Sweetener" },
   // add more as needed
 ];
 
