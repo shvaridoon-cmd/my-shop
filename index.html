@@ -1,5 +1,3 @@
-<!-- rebuild --> 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,41 +5,73 @@
   <title>Manifestation Shop</title>
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-  <!-- HEADER IMAGE -->
-  <header class="banner">
-    <img src="header.jpg" alt="Header Image">
-  </header>
+  <!-- NOW PLAYING BAR -->
+  <div class="now-playing-bar">
+    <span class="np-icon">🎧</span>
+    <span id="npTitle">Now Playing: —</span>
+    <div class="np-controls">
+      <button id="prevTrack">⟨</button>
+      <button id="playPause">▶</button>
+      <button id="nextTrack">⟩</button>
+    </div>
+    <div class="np-volume">
+      <span>Volume:</span>
+      <select id="volumeSelect">
+        <option value="1">100%</option>
+        <option value="0.8">80%</option>
+        <option value="0.5" selected>50%</option>
+        <option value="0.3">30%</option>
+        <option value="0.2">20%</option>
+        <option value="0.1">10%</option>
+      </select>
+    </div>
+    <div class="np-mute">
+      <span>Mute:</span>
+      <label class="switch">
+        <input type="checkbox" id="muteToggle">
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
 
   <section class="title-area">
     <h1>Manifestation Shop</h1>
-    <p>Everything here is free for you. Claim it.</p>
+    <p>Curate your desires. Everything here is already yours.</p>
   </section>
 
   <main class="layout">
 
-    <!-- LEFT SIDE -->
+    <!-- LEFT SIDE: WISHLIST -->
     <section class="items-section">
       <h2>Your Wishlist</h2>
 
       <div id="items" class="items-grid">
         <!-- Example items -->
         <div class="item-card">
-          <img src="header.jpg" class="item-img">
+          <div class="item-top">
+            <span class="item-bunny">🐰</span>
+            <button class="item-remove">✕</button>
+          </div>
           <h3>Dream Apartment</h3>
           <button class="add-btn" data-name="Dream Apartment">Add to cart</button>
         </div>
 
         <div class="item-card">
-          <img src="header.jpg" class="item-img">
+          <div class="item-top">
+            <span class="item-bunny">🐰</span>
+            <button class="item-remove">✕</button>
+          </div>
           <h3>Perfect Grades</h3>
           <button class="add-btn" data-name="Perfect Grades">Add to cart</button>
         </div>
 
         <div class="item-card">
-          <img src="header.jpg" class="item-img">
+          <div class="item-top">
+            <span class="item-bunny">🐰</span>
+            <button class="item-remove">✕</button>
+          </div>
           <h3>Healthy Glowing Skin</h3>
           <button class="add-btn" data-name="Healthy Glowing Skin">Add to cart</button>
         </div>
@@ -57,17 +87,12 @@
             <input type="text" id="itemName" required>
           </label>
 
-          <label>
-            Upload an image:
-            <input type="file" id="itemImage" accept="image/*">
-          </label>
-
           <button type="submit">Add to wishlist</button>
         </form>
       </div>
     </section>
 
-    <!-- RIGHT SIDE -->
+    <!-- RIGHT SIDE: CART -->
     <aside class="cart-section">
       <h2>Your Cart</h2>
       <ul id="cartList" class="cart-list"></ul>
@@ -77,7 +102,7 @@
         <button id="checkoutBtn">Checkout</button>
       </div>
 
-      <p class="note">Everything you choose already belongs to you.</p>
+      <p class="note">Everything you choose is already yours.</p>
     </aside>
 
   </main>
@@ -86,10 +111,14 @@
   <div id="overlay" class="overlay hidden">
     <div class="overlay-content">
       <h2>Order Confirmed</h2>
-      <p>It already belongs to you. It’s yours.</p>
+      <p>It already belongs to you. You’re just claiming it.</p>
       <button id="closeOverlay">Close</button>
     </div>
   </div>
+
+  <!-- AUDIO ELEMENTS -->
+  <audio id="bgAudio"></audio>
+  <audio id="clickAudio" src="click.mp3"></audio>
 
   <script src="script.js"></script>
 </body>
