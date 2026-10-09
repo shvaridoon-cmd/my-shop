@@ -1,3 +1,5 @@
+/* rebuild */
+
 // PLAYLIST CONFIG
 const playlist = [
   { src: "nasty - ariana grande [instrumental w_ background vocals].mp3", title: "nasty" },
