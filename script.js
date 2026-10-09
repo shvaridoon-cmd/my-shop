@@ -3,10 +3,10 @@
 // PLAYLIST CONFIG
 const playlist = [
   { src: "nasty.mp3", title: "nasty" },
-  { src: "hate that i made you love me.mp3", title: "hate that i made u love me" },
-  { src: "url to irl.mp3", title: "url to irl by Kash" },
-  { src: "easter pink.mp3", title: "easter pink" },
-  { src: "loona odd eye circle.mp3", title: "odd front },
+  { src: "hatemadeulove.mp3", title: "hate that i made u love me" },
+  { src: "urltoirl.mp3", title: "url to irl by Kash" },
+  { src: "easterpink.mp3", title: "easter pink" },
+  { src: "loonaoddeyecircle.mp3", title: "odd front },
   { src: "sweetener.mp3", title: "Sweetener" },
   // add more as needed
 ];
