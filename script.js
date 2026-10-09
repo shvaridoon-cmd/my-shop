@@ -1,5 +1,3 @@
-/* rebuild */
-
 // PLAYLIST CONFIG
 const playlist = [
   { src: "nasty.mp3", title: "nasty" },
