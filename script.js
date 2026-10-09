@@ -2,7 +2,7 @@
 
 // PLAYLIST CONFIG
 const playlist = [
-  { src: "nasty - ariana grande [instrumental w_ background vocals].mp3", title: "nasty" },
+  { src: "nasty.mp3", title: "nasty" },
   { src: "Ariana Grande - hate that i made you love me (official lyric video).mp3", title: "hate that i made u love me" },
   { src: "url to irl.mp3", title: "url to irl by Kash" },
   { src: "fakemink - Easter Pink (Prod Suzy Sheer).mp3", title: "easter pink" },
