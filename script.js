@@ -82,6 +82,9 @@ muteToggle.addEventListener("change", () => {
   bgAudio.muted = muted;
   clickAudio.muted = muted;
 });
+clickAudio.volume = bgAudio.volume;
+clickAudio.muted = bgAudio.muted;
+
 
 // DEFAULT VOLUME
 bgAudio.volume = parseFloat(volumeSelect.value);
