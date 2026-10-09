@@ -6,7 +6,7 @@ const playlist = [
   { src: "urltoirl.mp3", title: "urltoirl" },
   { src: "easterpink.mp3", title: "easterpink" },
   { src: "loonaoddeyecircle.mp3", title: "loonaoddeyecircle" },
-  { src: "sweetener.mp3", title: "Sweetener" },
+  { src: "sweetener.mp3", title: "sweetener" },
   // add more as needed
 ];
 
