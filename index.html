@@ -79,18 +79,16 @@
       </div>
 
       <!-- ADD NEW ITEM -->
-      <div class="add-item">
-        <h3>Add a new desire</h3>
+      <div id="addNew">
+  <label>Name:</label>
+  <input type="text" id="newItemInput">
 
-        <form id="addItemForm">
-          <label>
-            Name:
-            <input type="text" id="itemName" required>
-          </label>
+  <label>Image:</label>
+  <input type="file" id="newItemImage" accept="image/*">
 
-          <button type="submit">Add to wishlist</button>
-        </form>
-      </div>
+  <button id="addItemBtn">Add desire</button>
+</div>
+
     </section>
 
     <!-- RIGHT SIDE: CART -->
