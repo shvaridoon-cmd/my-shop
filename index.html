@@ -2,48 +2,64 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Manifestation Shop – Everything is Free</title>
+  <title>Manifestation Shop</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <header class="header">
-    <h1>Manifestation Shop</h1>
-    <p>Everything here is <span class="highlight">free for you</span>. Add it to your cart and claim it.</p>
+
+  <!-- HEADER IMAGE -->
+  <header class="banner">
+    <img src="header.jpg" alt="Header Image">
   </header>
 
+  <section class="title-area">
+    <h1>Manifestation Shop</h1>
+    <p>Everything here is free for you. Claim it.</p>
+  </section>
+
   <main class="layout">
+
     <!-- LEFT SIDE -->
     <section class="items-section">
       <h2>Your Wishlist</h2>
 
       <div id="items" class="items-grid">
+        <!-- Example items -->
         <div class="item-card">
+          <img src="header.jpg" class="item-img">
           <h3>Dream Apartment</h3>
-          <p class="tagline">Free for you</p>
           <button class="add-btn" data-name="Dream Apartment">Add to cart</button>
         </div>
 
         <div class="item-card">
+          <img src="header.jpg" class="item-img">
           <h3>Perfect Grades</h3>
-          <p class="tagline">Free for you</p>
           <button class="add-btn" data-name="Perfect Grades">Add to cart</button>
         </div>
 
         <div class="item-card">
+          <img src="header.jpg" class="item-img">
           <h3>Healthy Glowing Skin</h3>
-          <p class="tagline">Free for you</p>
           <button class="add-btn" data-name="Healthy Glowing Skin">Add to cart</button>
         </div>
       </div>
 
+      <!-- ADD NEW ITEM -->
       <div class="add-item">
         <h3>Add a new desire</h3>
+
         <form id="addItemForm">
           <label>
-            Name of item:
-            <input type="text" id="itemName" placeholder="e.g. New iPhone, Trip to Mexico" required>
+            Name:
+            <input type="text" id="itemName" required>
           </label>
+
+          <label>
+            Upload an image:
+            <input type="file" id="itemImage" accept="image/*">
+          </label>
+
           <button type="submit">Add to wishlist</button>
         </form>
       </div>
@@ -51,23 +67,24 @@
 
     <!-- RIGHT SIDE -->
     <aside class="cart-section">
-      <h2>Your Manifestation Cart</h2>
+      <h2>Your Cart</h2>
       <ul id="cartList" class="cart-list"></ul>
 
       <div class="cart-footer">
         <p>Total items: <span id="cartCount">0</span></p>
-        <button id="checkoutBtn">Visualize Checkout</button>
+        <button id="checkoutBtn">Checkout</button>
       </div>
 
-      <p class="note">This cart is your ritual. Everything here is already yours energetically.</p>
+      <p class="note">Everything you choose already belongs to you.</p>
     </aside>
+
   </main>
 
   <!-- OVERLAY -->
   <div id="overlay" class="overlay hidden">
     <div class="overlay-content">
-      <h2>Order Confirmed ✨</h2>
-      <p>Your desires are on their way to you. Stay aligned, stay open.</p>
+      <h2>Order Confirmed</h2>
+      <p>It already belongs to you. It’s yours.</p>
       <button id="closeOverlay">Close</button>
     </div>
   </div>
