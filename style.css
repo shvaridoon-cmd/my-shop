@@ -1,185 +1,134 @@
-/* General reset */
-* {
-  box-sizing: border-box;
-  margin: 0;
+/* STRIPED BACKGROUND */
+body {
+  background: repeating-linear-gradient(
+    45deg,
+    black,
+    black 20px,
+    white 20px,
+    white 40px
+  );
+  color: white;
+  font-family: system-ui, sans-serif;
   padding: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin: 0;
 }
 
-body {
-  background: #f7f3ff;
-  color: #2b1b3f;
+/* HEADER IMAGE */
+.banner img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+}
+
+.title-area {
+  text-align: center;
   padding: 20px;
 }
 
-/* Header */
-.header {
-  text-align: center;
-  margin-bottom: 30px;
+.title-area h1 {
+  font-size: 2.8rem;
+  color: white;
 }
 
-.header h1 {
-  font-size: 2.4rem;
-  letter-spacing: 0.05em;
+.title-area p {
+  color: pink;
+  font-size: 1.1rem;
 }
 
-.header p {
-  margin-top: 10px;
-  font-size: 1rem;
-}
-
-.highlight {
-  color: #b34bff;
-  font-weight: 600;
-}
-
-/* Layout */
+/* LAYOUT */
 .layout {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 20px;
+  padding: 20px;
 }
 
-/* Items section */
-.items-section h2,
-.cart-section h2 {
-  margin-bottom: 10px;
-}
-
+/* ITEM CARDS */
 .items-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 15px;
-  margin-bottom: 20px;
 }
 
 .item-card {
-  background: #ffffff;
+  background: rgba(255,255,255,0.1);
+  border: 2px solid pink;
   border-radius: 12px;
-  padding: 15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  padding: 10px;
+  text-align: center;
 }
 
-.item-card h3 {
-  font-size: 1.1rem;
-  margin-bottom: 5px;
-}
-
-.tagline {
-  font-size: 0.9rem;
-  color: #7a4bb3;
+.item-img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
   margin-bottom: 10px;
 }
 
 .add-btn {
-  background: #b34bff;
-  color: #fff;
+  background: pink;
+  color: black;
   border: none;
   padding: 8px 12px;
   border-radius: 999px;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-weight: bold;
 }
 
-.add-btn:hover {
-  background: #9336d6;
-}
-
-/* Add item form */
+/* ADD ITEM FORM */
 .add-item {
   margin-top: 20px;
-  background: #fff;
+  background: rgba(255,255,255,0.1);
   padding: 15px;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-}
-
-.add-item h3 {
-  margin-bottom: 10px;
-}
-
-.add-item label {
-  display: block;
-  font-size: 0.9rem;
-  margin-bottom: 8px;
+  border: 2px solid pink;
 }
 
 .add-item input {
   width: 100%;
   padding: 8px;
+  margin-top: 6px;
   border-radius: 8px;
-  border: 1px solid #d3c4ff;
-  margin-top: 4px;
+  border: 1px solid pink;
 }
 
-.add-item button {
-  margin-top: 10px;
-  background: #2b1b3f;
-  color: #fff;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 999px;
-  cursor: pointer;
-  font-size: 0.9rem;
-}
-
-.add-item button:hover {
-  background: #1b1028;
-}
-
-/* Cart section */
+/* CART */
 .cart-section {
-  background: #fff;
+  background: rgba(255,255,255,0.1);
   padding: 15px;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-  height: fit-content;
+  border: 2px solid pink;
 }
 
 .cart-list {
   list-style: none;
-  margin-bottom: 10px;
   max-height: 260px;
   overflow-y: auto;
+  padding: 0;
 }
 
 .cart-list li {
   padding: 6px 0;
-  border-bottom: 1px dashed #e0d4ff;
-  font-size: 0.95rem;
-}
-
-.cart-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
+  border-bottom: 1px solid pink;
 }
 
 #checkoutBtn {
-  background: #ff7bb3;
-  color: #2b1b3f;
+  background: pink;
+  color: black;
   border: none;
   padding: 8px 12px;
   border-radius: 999px;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-weight: bold;
 }
 
-#checkoutBtn:hover {
-  background: #ff5f9f;
-}
-
-.note {
-  font-size: 0.8rem;
-  color: #7a7a9a;
-}
-
-/* Overlay */
+/* OVERLAY */
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.6);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -190,39 +139,13 @@ body {
 }
 
 .overlay-content {
-  background: #fff;
+  background: black;
   padding: 20px;
   border-radius: 12px;
   text-align: center;
-  max-width: 320px;
+  border: 2px solid pink;
 }
 
 .overlay-content h2 {
-  margin-bottom: 10px;
+  color: pink;
 }
-
-.overlay-content p {
-  margin-bottom: 15px;
-}
-
-#closeOverlay {
-  background: #2b1b3f;
-  color: #fff;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 999px;
-  cursor: pointer;
-  font-size: 0.9rem;
-}
-
-#closeOverlay:hover {
-  background: #1b1028;
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  .layout {
-    grid-template-columns: 1fr;
-  }
-}
-
