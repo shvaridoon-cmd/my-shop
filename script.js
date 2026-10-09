@@ -102,6 +102,13 @@ function setupAddButtons() {
     });
   });
 }
+// Attach remove listeners to existing items
+document.querySelectorAll(".item-remove").forEach(btn => {
+  btn.addEventListener("click", () => {
+    btn.closest(".item-card").remove();
+    playClick();
+  });
+});
 
 function addToCart(name) {
   cart.push(name);
