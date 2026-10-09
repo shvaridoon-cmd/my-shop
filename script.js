@@ -1,149 +1,106 @@
+/* rebuild */
+// =========================
+// AUDIO SETUP
+// =========================
+const bgAudio = document.getElementById("bgAudio");
+const clickAudio = document.getElementById("clickAudio");
 
 // PLAYLIST CONFIG
 const playlist = [
   { src: "nasty.mp3", title: "nasty" },
-  { src: "hatemadeulove.mp3", title: "hatemadeulove" },
-  { src: "urltoirl.mp3", title: "urltoirl" },
-  { src: "easterpink.mp3", title: "easterpink" },
-  { src: "loonaoddeyecircle.mp3", title: "loonaoddeyecircle" },
-  { src: "sweetener.mp3", title: "sweetener" },
-  // add more as needed
+  { src: "hatemadeulove.mp3", title: "hate that i made u love me" },
+  { src: "urltoirl.mp3", title: "url to irl by Kash" },
+  { src: "easterpink.mp3", title: "easter pink" },
+  { src: "loonaoddeyecircle.mp3", title: "odd front" },
+  { src: "sweetener.mp3", title: "Sweetener" }
 ];
 
 let currentTrackIndex = 0;
 let isPlaying = false;
-let cart = [];
 
-const bgAudio = document.getElementById("bgAudio");
-const clickAudio = document.getElementById("clickAudio");
-const npTitle = document.getElementById("npTitle");
-const playPauseBtn = document.getElementById("playPause");
-const prevTrackBtn = document.getElementById("prevTrack");
-const nextTrackBtn = document.getElementById("nextTrack");
-const volumeSelect = document.getElementById("volumeSelect");
-const muteToggle = document.getElementById("muteToggle");
-
-// INIT PLAYLIST
+// =========================
+// PLAYLIST FUNCTIONS
+// =========================
 function loadTrack(index) {
   const track = playlist[index];
-  if (!track) return;
   bgAudio.src = track.src;
-  npTitle.textContent = `Now Playing: ${track.title}`;
+  document.getElementById("nowPlaying").textContent = track.title;
 }
 
 function playTrack() {
   bgAudio.play();
   isPlaying = true;
-  playPauseBtn.textContent = "⏸";
+  document.getElementById("playBtn").textContent = "⏸";
 }
 
 function pauseTrack() {
   bgAudio.pause();
   isPlaying = false;
-  playPauseBtn.textContent = "▶";
+  document.getElementById("playBtn").textContent = "▶";
 }
 
-playPauseBtn.addEventListener("click", () => {
-  if (!bgAudio.src) loadTrack(currentTrackIndex);
-  if (isPlaying) {
-    pauseTrack();
-  } else {
-    playTrack();
-  }
-});
-
-prevTrackBtn.addEventListener("click", () => {
-  currentTrackIndex = (currentTrackIndex - 1 + playlist.length) % playlist.length;
-  loadTrack(currentTrackIndex);
-  playTrack();
-});
-
-nextTrackBtn.addEventListener("click", () => {
+function nextTrack() {
   currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
   loadTrack(currentTrackIndex);
   playTrack();
-});
+}
 
-bgAudio.addEventListener("ended", () => {
-  currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
+function prevTrack() {
+  currentTrackIndex =
+    (currentTrackIndex - 1 + playlist.length) % playlist.length;
   loadTrack(currentTrackIndex);
   playTrack();
+}
+
+// =========================
+// BUTTON CONTROLS
+// =========================
+document.getElementById("playBtn").addEventListener("click", () => {
+  isPlaying ? pauseTrack() : playTrack();
 });
 
+document.getElementById("nextBtn").addEventListener("click", nextTrack);
+document.getElementById("prevBtn").addEventListener("click", prevTrack);
+
+// =========================
 // VOLUME + MUTE
-volumeSelect.addEventListener("change", () => {
-  const level = parseFloat(volumeSelect.value);
-  bgAudio.volume = level;
-  clickAudio.volume = level;
+// =========================
+const volumeSlider = document.getElementById("volumeSlider");
+const muteSlider = document.getElementById("muteSlider");
+
+volumeSlider.addEventListener("input", () => {
+  bgAudio.volume = volumeSlider.value;
+  clickAudio.volume = volumeSlider.value;
 });
 
-muteToggle.addEventListener("change", () => {
-  const muted = muteToggle.checked;
+muteSlider.addEventListener("input", () => {
+  const muted = muteSlider.value === "0";
   bgAudio.muted = muted;
   clickAudio.muted = muted;
 });
-clickAudio.volume = bgAudio.volume;
-clickAudio.muted = bgAudio.muted;
 
-
-// DEFAULT VOLUME
-bgAudio.volume = parseFloat(volumeSelect.value);
-clickAudio.volume = parseFloat(volumeSelect.value);
-
+// =========================
 // CLICK SOUND
+// =========================
 function playClick() {
   clickAudio.currentTime = 0;
   clickAudio.play();
 }
 
-// CART LOGIC
-function setupAddButtons() {
-  document.querySelectorAll(".add-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      addToCart(btn.dataset.name);
-      playClick();
-    });
-  });
-}
-// Attach remove listeners to existing items
-document.querySelectorAll(".item-remove").forEach(btn => {
-  btn.addEventListener("click", () => {
-    btn.closest(".item-card").remove();
-    playClick();
-  });
-});
+// =========================
+// CART + WISHLIST
+// =========================
+let cart = [];
 
 function addToCart(name) {
   cart.push(name);
-  renderCart();
+  document.getElementById("cartCount").textContent = cart.length;
+  playClick();
 }
 
-function renderCart() {
-  const cartList = document.getElementById("cartList");
-  const cartCount = document.getElementById("cartCount");
-
-  cartList.innerHTML = "";
-  cart.forEach((item, index) => {
-    const li = document.createElement("li");
-    li.textContent = item;
-    cartList.appendChild(li);
-  });
-
-  cartCount.textContent = cart.length;
-}
-
-// WISHLIST ADD/REMOVE
-document.getElementById("addItemForm").addEventListener("submit", e => {
-  e.preventDefault();
-
-  const name = document.getElementById("itemName").value.trim();
-  if (!name) return;
-
-  createItemCard(name);
-
-  document.getElementById("itemName").value = "";
-});
-
+// =========================
+// CREATE ITEM CARD (for new desires)
+// =========================
 function createItemCard(name) {
   const items = document.getElementById("items");
 
@@ -155,35 +112,65 @@ function createItemCard(name) {
       <span class="item-bunny">🐰</span>
       <button class="item-remove">✕</button>
     </div>
+
+    <img src="header.jpg" class="item-img">
+
     <h3>${name}</h3>
     <button class="add-btn" data-name="${name}">Add to cart</button>
   `;
 
   items.appendChild(card);
 
-  card.querySelector(".add-btn").addEventListener("click", () => {
-    addToCart(name);
-    playClick();
-  });
-
+  // attach listeners
   card.querySelector(".item-remove").addEventListener("click", () => {
     card.remove();
     playClick();
   });
+
+  card.querySelector(".add-btn").addEventListener("click", () => {
+    addToCart(name);
+  });
 }
 
-// OVERLAY
-document.getElementById("checkoutBtn").addEventListener("click", () => {
-  document.getElementById("overlay").classList.remove("hidden");
-  playClick();
+// =========================
+// ADD NEW DESIRE
+// =========================
+document.getElementById("addItemBtn").addEventListener("click", () => {
+  const input = document.getElementById("newItemInput");
+  const name = input.value.trim();
+
+  if (name !== "") {
+    createItemCard(name);
+    input.value = "";
+    playClick();
+  }
 });
 
-document.getElementById("closeOverlay").addEventListener("click", () => {
-  document.getElementById("overlay").classList.add("hidden");
-  playClick();
-});
+// =========================
+// FIX OLD ITEMS (attach remove + add listeners)
+// =========================
+function fixOldItems() {
+  document.querySelectorAll(".item-card").forEach(card => {
+    const removeBtn = card.querySelector(".item-remove");
+    const addBtn = card.querySelector(".add-btn");
 
-// INITIALIZE
+    if (removeBtn) {
+      removeBtn.addEventListener("click", () => {
+        card.remove();
+        playClick();
+      });
+    }
+
+    if (addBtn) {
+      addBtn.addEventListener("click", () => {
+        addToCart(addBtn.dataset.name);
+      });
+    }
+  });
+}
+
+// =========================
+// INIT
+// =========================
 loadTrack(currentTrackIndex);
-setupAddButtons();
-renderCart();
+fixOldItems();
